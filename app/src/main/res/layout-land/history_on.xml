@@ -17,46 +17,57 @@
 
         <TextView
             android:id="@+id/rounds"
+            android:textColor="@color/Theme1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18dp"
             android:gravity="left"
             android:text="Rounds" />
 
         <TextView
             android:id="@+id/tries"
+            android:textColor="@color/Theme1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18dp"
             android:text="Tries" />
 
         <TextView
             android:id="@+id/correct"
+            android:textColor="@color/Theme1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18dp"
             android:gravity="center"
             android:text="Correct" />
 
         <TextView
             android:id="@+id/misses"
+            android:textColor="@color/Theme1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18dp"
             android:gravity="right"
             android:text="Misses" />
 
         <TextView
             android:id="@+id/percentage"
+            android:textColor="@color/Theme1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18dp"
             android:gravity="right"
             android:text="Percentage" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/listView1"
+        android:textColor="@color/Theme1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"

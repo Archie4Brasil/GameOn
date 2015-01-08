@@ -17,7 +17,7 @@ public class GameDB extends SQLiteOpenHelper {
 	public static final String PERCENTAGE = "percentage";
 	public static final String ID = "_id";
 
-	SQLiteDatabase db;
+	protected SQLiteDatabase db;
 
 	public GameDB(Context context, String name, CursorFactory factory,
 			int version) {
@@ -50,9 +50,6 @@ public class GameDB extends SQLiteOpenHelper {
 		db.insert(TABLE_NAME, ROUNDS, values);
 		db.close();
 
-	}
-
-	public void insert(ContentValues cv) {
 	}
 
 	public void delete(int id) {

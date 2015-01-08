@@ -2,7 +2,9 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!-- Set new color for theme -->
@@ -10,6 +12,7 @@
 
     <style name="TextView" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">15dp</item>
     </style>
 
     <!-- Application theme. -->

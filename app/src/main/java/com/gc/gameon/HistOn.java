@@ -38,6 +38,14 @@ public class HistOn extends Activity {
 
 		// first call to context menu
 		registerForContextMenu(listView);
+
+
+
+
+
+
+
+
 		// listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 		//
 		// listView.setMultiChoiceModeListener(new MultiChoiceModeListener() {

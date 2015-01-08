@@ -31,12 +31,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="Counter"
+                android:textColor="@color/Theme1"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Button
                 android:id="@+id/resetButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/Theme1"
                 android:onClick="resetButton"
                 android:text="RESET SCORE" />
         </LinearLayout>
@@ -52,6 +54,7 @@
             <TextView
                 android:id="@+id/firstNumber"
                 android:layout_width="match_parent"
+                android:textColor="@color/Theme1"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -63,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:textColor="@color/Theme1"
                 android:gravity="center"
                 android:text="operand"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -72,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:textColor="@color/Theme1"
                 android:gravity="center"
                 android:text="Second NUmber"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -90,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/Theme1"
                 android:onClick="startAnswersCheck"
                 android:text="Button" />
 
@@ -98,6 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/Theme1"
                 android:onClick="startAnswersCheck"
                 android:text="Button" />
 
@@ -106,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/Theme1"
                 android:onClick="startAnswersCheck"
                 android:text="Button" />
         </LinearLayout>

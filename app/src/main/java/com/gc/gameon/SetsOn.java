@@ -17,25 +17,25 @@ import android.widget.Switch;
 
 public class SetsOn extends Activity {
 	private Switch setMusic, setTimer, setVibe;
+    private int options;
 	private MenuItem itemMenu;
-	GameDB db = new GameDB(this, GameDB.TABLE_NAME, null, 1);
+	protected GameDB db = new GameDB(this, GameDB.TABLE_NAME, null, 1);
 
-    SharedPreferences sharedPreferences;
+    protected SharedPreferences sharedPreferences;
 
 
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.settings_on);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings_on);
 
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		// addPreferencesFromResource(R.xml.preferences);
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // addPreferencesFromResource(R.xml.preferences);
 
-        switchState();
 
-		setMusic = (Switch) findViewById(R.id.musicOn);
+        setMusic = (Switch) findViewById(R.id.musicOn);
 		setMusic.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -43,19 +43,16 @@ public class SetsOn extends Activity {
 					boolean isChecked) {
 
 				if (isChecked) {
-					sharedPreferences = getSharedPreferences(
-							"Music", 0);
+                    SharedPreferences sharedPreferences = getSharedPreferences("Options", 0);
 					Editor editor = sharedPreferences.edit();
 					editor.putInt("Music Options", 1);
 					editor.commit();
 					setMusic.setChecked(true);
 
 				} else {
-					sharedPreferences = getSharedPreferences(
-							"Music", 0);
+                    SharedPreferences sharedPreferences = getSharedPreferences("Options", 0);
 					Editor editor = sharedPreferences.edit();
 					editor.putInt("Music Options", 0);
-                    editor.putInt("Music switch", 0);
 					editor.commit();
 					setMusic.setChecked(false);
 				}
@@ -63,58 +60,50 @@ public class SetsOn extends Activity {
 			}
 		});
 
-		setTimer = (Switch) findViewById(R.id.timerOn);
-		setTimer.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		setVibe = (Switch) findViewById(R.id.vibeOn);
+		setVibe.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView,
+		boolean isChecked) {
 
-				if (isChecked) {
-					SharedPreferences sharedPreferences = getSharedPreferences(
-							"Timer", 0);
-					Editor editor = sharedPreferences.edit();
-					editor.putInt("Timer Options", 1);
-					editor.commit();
-					setTimer.setChecked(true);
-				} else {
-					SharedPreferences sharedPreferences = getSharedPreferences(
-							"Timer", 0);
-					Editor editor = sharedPreferences.edit();
-					editor.putInt("Timer Options", 0);
-					editor.commit();
-					setTimer.setChecked(false);
-				}
+		if(isChecked){
+		SharedPreferences sharedPreferences = getSharedPreferences("Options", 0);
+		Editor editor = sharedPreferences.edit();
+		editor.putInt("Vibration Options", 1);
+		editor.commit();
+		setVibe.setChecked(true);
+		}else{
+		SharedPreferences sharedPreferences = getSharedPreferences("Options", 0);
+		Editor editor = sharedPreferences.edit();
+		editor.putInt("Vibration Options", 0);
+		editor.commit();
+		setVibe.setChecked(false);
+		}
 
-			}
+		}
 		});
 
-		// setVibe = (Switch) findViewById(R.id.vibeOn);
-		// setVibe.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-		//
-		// @Override
-		// public void onCheckedChanged(CompoundButton buttonView,
-		// boolean isChecked) {
-		//
-		// if(isChecked){
-		// SharedPreferences sharedPreferences =
-		// getSharedPreferences("Vibreation", 0);
-		// Editor editor = sharedPreferences.edit();
-		// editor.putInt("Vibreation Options", 1);
-		// editor.commit();
-		// setVibe.setChecked(true);
-		// }else{
-		// SharedPreferences sharedPreferences =
-		// getSharedPreferences("Vibreation", 0);
-		// Editor editor = sharedPreferences.edit();
-		// editor.putInt("Vibreation Options", 0);
-		// editor.commit();
-		// setVibe.setChecked(false);
-		// }
-		//
-		// }
-		// });
+        checkPreference();
 	}
+
+    // setting previous preferences
+    public void checkPreference()
+    {
+        sharedPreferences = getSharedPreferences("Options", 0);
+
+        if (sharedPreferences.getInt("Music Options", 1) == 1) {
+            setMusic.setChecked(true);
+        } else{
+            setMusic.setChecked(false);
+        }
+
+        if(sharedPreferences.getInt("Vibration Options",1) == 1){
+            setVibe.setChecked(true);
+        } else {
+            setVibe.setChecked(false);
+        }
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -156,10 +145,4 @@ public class SetsOn extends Activity {
 						}).show();
 
 	}
-
-    public void switchState()
-    {
-        sharedPreferences = getSharedPreferences("Music switch", 0);
-        
-    }
 }

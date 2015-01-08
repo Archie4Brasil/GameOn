@@ -9,23 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@color/light"
         android:checked="true"
+        android:textColor="@color/Theme1"
         android:text="Music Options" />
-
-    <Switch
-        android:id="@+id/timerOn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:checked="true"
-        android:text="Timer Options" />
 
     <Switch
         android:id="@+id/vibeOn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@color/light"
         android:checked="true"
+        android:textColor="@color/Theme1"
         android:text="Vibration Options" />
 
     <Button
@@ -36,6 +32,7 @@
         android:background="@color/light"
         android:gravity="left|center_vertical"
         android:onClick="deleteHistory"
+        android:textColor="@color/Theme1"
         android:text="Delete History" />
 
 </LinearLayout>

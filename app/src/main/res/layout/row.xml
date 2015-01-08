@@ -16,6 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/Theme1"
+        android:textSize="25dp"
         android:text="TextView" />
 
     <TextView
@@ -23,6 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/Theme1"
+        android:textSize="25dp"
         android:text="TextView" />
 
     <TextView
@@ -30,6 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/Theme1"
+        android:textSize="25dp"
         android:text="TextView" />
 
     <TextView
@@ -37,18 +43,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/Theme1"
+        android:textSize="25dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/Theme1"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/formatpercen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/Theme1"
         android:text="%" />
 
 </LinearLayout>
