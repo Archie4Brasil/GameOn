@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DivTheme"
     android:orientation="vertical" >
 
     <Switch
@@ -9,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/light"
         android:checked="true"
-        android:textColor="@color/Theme1"
+        android:textColor="@color/light"
         android:text="Music Options" />
 
     <Switch
@@ -19,9 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/light"
         android:checked="true"
-        android:textColor="@color/Theme1"
+        android:textColor="@color/light"
         android:text="Vibration Options" />
 
     <Button
@@ -29,10 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/light"
         android:gravity="left|center_vertical"
+        android:background="@color/DivTheme"
         android:onClick="deleteHistory"
-        android:textColor="@color/Theme1"
+        android:textColor="@color/light"
         android:text="Delete History" />
 
 </LinearLayout>

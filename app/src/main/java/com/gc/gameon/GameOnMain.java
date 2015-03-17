@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -19,16 +20,17 @@ import android.widget.Toast;
 
 public class GameOnMain extends Activity implements OnNavigationListener {
     // necessary data holders
-    private static int correctGuesses = 0, totalGuesses = 0, roundFromMain,
+    private static int correctGuesses = 0, totalGuesses = 0, roundFromMain = 0,
             firstNumber, secondNumber, randomOne, randomTwo, answer, operand,
-            range, min, pause, ansOrder = 0;
+            range, min, pause, ansOrder = 0, testerSafe;
     private String[] options = {"AddOn", "SubOn", "MultOn", "DivOn"};
-    protected boolean land = false;
     private static TextView textView;
     private static final String DATABASE_NAME = "db";
     private ScoreOn score;
     private GameDB db;
     private ActionBar actionBar;
+    private View background;
+    private MediaPlayer mediaPlayer;
 
     // main display
     @Override
@@ -38,61 +40,90 @@ public class GameOnMain extends Activity implements OnNavigationListener {
 
         // setting spinner option on action bar
         actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         modeOfPlay();
 
+        background = this.getWindow().getDecorView();
         score = new ScoreOn();
         db = new GameDB(this, DATABASE_NAME, null, 1);
 
         if (savedInstanceState == null) {
             // setting the spinner position from ListOn
             roundFromMain = 0;
+            testerSafe = 0;
 
             operand = this.getIntent().getIntExtra("op", 4);
-        } else {
-            textView = (TextView) findViewById(R.id.firstNumber);
-            textView.setText("" + firstNumber);
-            textView = (TextView) findViewById(R.id.operand);
-            textView.setText(savedInstanceState.getString("operand"));
-            textView = (TextView) findViewById(R.id.secondNumber);
-            textView.setText("" + secondNumber);
 
-            switch (savedInstanceState.getInt("ansOrder")) {
-                case 1: // first possible order
-                    textView = (TextView) findViewById(R.id.button1);
-                    textView.setText("" + (answer));
-                    textView = (TextView) findViewById(R.id.button2);
-                    textView.setText("" + randomOne);
-                    textView = (TextView) findViewById(R.id.button3);
-                    textView.setText("" + randomTwo);
-                    ansOrder = 1;
-                    break;
-
-                case 2:
-                    textView = (TextView) findViewById(R.id.button1);
-                    textView.setText("" + randomOne);
-                    textView = (TextView) findViewById(R.id.button2);
-                    textView.setText("" + (answer));
-                    textView = (TextView) findViewById(R.id.button3);
-                    textView.setText("" + randomTwo);
-                    ansOrder = 2;
-                    break;
-                case 3:
-                    textView = (TextView) findViewById(R.id.button1);
-                    textView.setText("" + randomOne);
-                    textView = (TextView) findViewById(R.id.button2);
-                    textView.setText("" + randomTwo);
-                    textView = (TextView) findViewById(R.id.button3);
-                    textView.setText("" + (answer));
-                    ansOrder = 3;
-                    break;
+            if (operand == 4){
+                onRestoreInstanceState(savedInstanceState);
+            } else {
+                actionBar.setSelectedNavigationItem(operand);
             }
-
-            land = true;
-            displayScore();
         }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        textView = (TextView) findViewById(R.id.firstNumber);
+        textView.setText("" + firstNumber);
+        textView = (TextView) findViewById(R.id.operand);
+        textView.setText(savedInstanceState.getString("operand"));
+        textView = (TextView) findViewById(R.id.secondNumber);
+        textView.setText("" + secondNumber);
+
+        switch (savedInstanceState.getString("operand")) {
+            case "+":
+                background.setBackgroundColor(Color.parseColor("#27aaE1"));
+                break;
+            case "-":
+                background.setBackgroundColor(Color.parseColor("#65935c"));
+                break;
+            case "*":
+                background.setBackgroundColor(Color.parseColor("#f05152"));
+                break;
+            case "/":
+                background.setBackgroundColor(Color.parseColor("#76689c"));
+                break;
+        }
+
+        switch (savedInstanceState.getInt("ansOrder")) {
+            case 1: // first possible order
+                textView = (TextView) findViewById(R.id.button1);
+                textView.setText("" + (answer));
+                textView = (TextView) findViewById(R.id.button2);
+                textView.setText("" + randomOne);
+                textView = (TextView) findViewById(R.id.button3);
+                textView.setText("" + randomTwo);
+                ansOrder = 1;
+                break;
+
+            case 2:
+                textView = (TextView) findViewById(R.id.button1);
+                textView.setText("" + randomOne);
+                textView = (TextView) findViewById(R.id.button2);
+                textView.setText("" + (answer));
+                textView = (TextView) findViewById(R.id.button3);
+                textView.setText("" + randomTwo);
+                ansOrder = 2;
+                break;
+            case 3:
+                textView = (TextView) findViewById(R.id.button1);
+                textView.setText("" + randomOne);
+                textView = (TextView) findViewById(R.id.button2);
+                textView.setText("" + randomTwo);
+                textView = (TextView) findViewById(R.id.button3);
+                textView.setText("" + (answer));
+                ansOrder = 3;
+                break;
+        }
+
+        testerSafe++;
+        actionBar.setSelectedNavigationItem(operand);
+        displayScore();
     }
 
     @Override
@@ -120,33 +151,37 @@ public class GameOnMain extends Activity implements OnNavigationListener {
         secondNumber = (int) (Math.random() * 10) + 1;
 
         switch (i) {
-            case 0:
+            case 0: //setting addition option and range
                 answer = firstNumber + secondNumber;
                 textView = (TextView) findViewById(R.id.operand);
                 textView.setText("+");
                 min = 2;
                 range = (20 - min) + 1;
+                background.setBackgroundColor(Color.parseColor("#27aaE1"));
                 break;
-            case 1:
+            case 1: //setting subtraction option and range
                 answer = firstNumber - secondNumber;
                 textView = (TextView) findViewById(R.id.operand);
                 textView.setText("-");
                 min = -9;
                 range = (9 - min) + 1;
+                background.setBackgroundColor(Color.parseColor("#65935c"));
                 break;
-            case 2:
+            case 2: //setting multiplication option and range
                 answer = firstNumber * secondNumber;
                 textView = (TextView) findViewById(R.id.operand);
                 textView.setText("*");
                 min = 1;
                 range = (100 - min) + 1;
+                background.setBackgroundColor(Color.parseColor("#f05152"));
                 break;
-            case 3:
+            case 3: //setting division option and range
                 answer = firstNumber / secondNumber;
                 textView = (TextView) findViewById(R.id.operand);
                 textView.setText("/");
                 min = 0;
                 range = (10 - min) + 1;
+                background.setBackgroundColor(Color.parseColor("#76689c"));
                 break;
         }
 
@@ -259,6 +294,11 @@ public class GameOnMain extends Activity implements OnNavigationListener {
             score.setTries(totalGuesses);
             score.setMisses(totalGuesses - correctGuesses);
         }
+
+        if(totalGuesses == 15) {
+            resetButton(v);
+        }
+
     }
 
     // allows to vibe according to preferences
@@ -266,7 +306,7 @@ public class GameOnMain extends Activity implements OnNavigationListener {
         SharedPreferences sharedPreferences = getSharedPreferences("Options", 0);
         if (sharedPreferences.getInt("Vibration Options", 1) == 1) {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(500);
+            v.vibrate(750);
         }
     }
 
@@ -277,16 +317,34 @@ public class GameOnMain extends Activity implements OnNavigationListener {
             switch (option) {
                 case 1:
                     // correct sound
-                    MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ding);
+                    mediaPlayer = MediaPlayer.create(this, R.raw.ding);
                     mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+
+                        };
+                    });
                     break;
                 case 2:
                     mediaPlayer = MediaPlayer.create(this, R.raw.uhoh);
                     mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+
+                        };
+                    });
                     break;
                 case 3:
                     mediaPlayer = MediaPlayer.create(this, R.raw.sneeze);
                     mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+
+                        };
+                    });
                     break;
             }
         }
@@ -386,41 +444,28 @@ public class GameOnMain extends Activity implements OnNavigationListener {
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         // TODO Auto-generated method stub
-        if (roundFromMain == 0) {
-            itemPosition = operand;
-            roundFromMain++;
-            Toast.makeText(this, options[itemPosition], Toast.LENGTH_SHORT).show();
-        }
-
-        // error handling for index over 3
-        if (itemPosition > 3 || itemPosition < 0) {
-            itemPosition = operand;
-        }
+        operand = itemPosition;
 
         // safeguard from drawing new numbers for problem
-        if (land == false) {
+        if ((testerSafe%3) == 0) {
             switch (itemPosition) {
                 case 0:
                     setOperation(itemPosition);
-                    land = false;
                     return true;
                 case 1:
                     setOperation(itemPosition);
-                    land = false;
                     return true;
                 case 2:
                     setOperation(itemPosition);
-                    land = false;
                     return true;
                 case 3:
                     setOperation(itemPosition);
-                    land = false;
                     return true;
                 default:
                     return false;
             }
         }else{
-            land = false;
+            testerSafe++;
             return false;
         }
     }

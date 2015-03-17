@@ -6,21 +6,21 @@
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-48f7444b5fdb7f39b0376b87b857471094245067.jar" />
+        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\release\support-annotations-20.0.0-48f7444b5fdb7f39b0376b87b857471094245067.jar" />
     </item>
     <item
         jar="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-a812e5dbfb5f9394463ab8d916e7b8d4cb028057.jar" />
+        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\release\internal_impl-20.0.0-a812e5dbfb5f9394463ab8d916e7b8d4cb028057.jar" />
     </item>
     <item
         jar="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\debug\classes-fb55e84aec4371719fd05779e9e35ffe6bca9c4e.jar" />
+        <dex dex="C:\Users\Archie\AndroidstudioProjects\GameOn\app\build\intermediates\pre-dexed\release\classes-fb55e84aec4371719fd05779e9e35ffe6bca9c4e.jar" />
     </item>
 
 </items>

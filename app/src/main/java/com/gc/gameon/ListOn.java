@@ -6,47 +6,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class ListOn extends Activity implements OnItemClickListener {
-	private String[] options = { "Add On", "Sub On", "Multi On", "Div On" };
-
+public class ListOn extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_game_on);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, options);
-
-		ListView mylist = (ListView) findViewById(R.id.listOn);
-		mylist.setAdapter(adapter);
-
-		mylist.setOnItemClickListener(this);
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(View v) {
 		// TODO Auto-generated method stub
 		Intent on = new Intent(this, GameOnMain.class);
 
-		switch (arg2) {
-		case 0:
-			on.putExtra("op", 0);
-			break;
-		case 1:
-			on.putExtra("op", 1);
-			break;
-		case 2:
-			on.putExtra("op", 2);
-			break;
-		case 3:
+        TextView text = (TextView) v;
+		if(text.getText().equals("Start Adding")) {
+            on.putExtra("op", 0);
+        } else if(text.getText().equals("Start Subtracting")) {
+            on.putExtra("op", 1);
+        } else if(text.getText().equals("Start Multiplying")) {
+            on.putExtra("op", 2);
+        } else {
 			on.putExtra("op", 3);
-			break;
 		}
 
 		startActivity(on);

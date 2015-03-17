@@ -7,6 +7,9 @@
     <color name="background">#a6d39d</color>
     <color name="dark">#000000</color>
     <color name="light">#ffffff</color>
-    <color name="Theme1">#27aaE1</color>
+    <color name="AddTheme">#27aaE1</color>
+    <color name="MultTheme">#f05152</color>
+    <color name="DivTheme">#76689c</color>
+    <color name="SubTheme">#65935c</color>
 
 </resources>

@@ -31,7 +31,7 @@ public class SetsOn extends Activity {
         setContentView(R.layout.settings_on);
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         // addPreferencesFromResource(R.xml.preferences);
 
 

@@ -31,7 +31,8 @@ public class HistOn extends Activity {
 		setContentView(R.layout.history_on);
 
 		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(false);
+
 
 		// simpler way to run DBAdapter
 		loadDisplay();
