@@ -11,16 +11,16 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int AddTheme=0x7f060000;
-        public static final int DivTheme=0x7f060001;
-        public static final int MultTheme=0x7f060002;
-        public static final int SubTheme=0x7f060003;
-        public static final int background=0x7f060004;
-        public static final int dark=0x7f060005;
-        public static final int light=0x7f060006;
-        public static final int primary=0x7f060007;
-        public static final int secondary=0x7f060008;
-        public static final int tertiary=0x7f060009;
+        public static final int AddTheme=0x7f080000;
+        public static final int DivTheme=0x7f080001;
+        public static final int MultTheme=0x7f080002;
+        public static final int SubTheme=0x7f080003;
+        public static final int background=0x7f080004;
+        public static final int dark=0x7f080005;
+        public static final int light=0x7f080006;
+        public static final int primary=0x7f080007;
+        public static final int secondary=0x7f080008;
+        public static final int tertiary=0x7f080009;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f070000;
@@ -87,23 +87,23 @@ public final class R {
         public static final int uhoh=0x7f050002;
     }
     public static final class string {
-        public static final int action_settings=0x7f080000;
-        public static final int app_name=0x7f080001;
-        public static final int hello_world=0x7f080002;
-        public static final int title_activity_game_on_main=0x7f080003;
-        public static final int title_activity_history_on=0x7f080004;
-        public static final int title_activity_settings_on=0x7f080005;
+        public static final int action_settings=0x7f090000;
+        public static final int app_name=0x7f090001;
+        public static final int hello_world=0x7f090002;
+        public static final int title_activity_game_on_main=0x7f090003;
+        public static final int title_activity_history_on=0x7f090004;
+        public static final int title_activity_settings_on=0x7f090005;
     }
     public static final class style {
-        /**  Set new color for theme 
- API 11 theme customizations can go here. 
+        /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
+ Set new color for theme 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
-        public static final int TextView=0x7f090002;
+        public static final int AppTheme=0x7f060001;
+        public static final int TextView=0x7f060002;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;
